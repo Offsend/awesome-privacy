@@ -1568,6 +1568,14 @@ categories:
           and other features you may expect of a full-featured translation solution in-browser. **Download**:
           [Chrome](https://chrome.google.com/webstore/detail/gbefmodhlophhakmoecijeppjblibmie) / [Firefox](https://addons.mozilla.org/addon/linguist-translator/)
 
+      - name: LibRedirect
+        url: https://libredirect.github.io
+        github: libredirect/browser_extension
+        icon: https://github.com/libredirect/browser_extension/blob/master/img/libredirect_full.svg
+        description: |
+          A browser extension that redirects popular sites to alternative privacy friendly frontends
+          **Download**: [Firefox](https://addons.mozilla.org/firefox/addon/libredirect/) - [Chrome](https://libredirect.github.io/download_chromium.html)
+
       notableMentions:
       - name: Extension source viewer
         url: https://addons.mozilla.org/en-US/firefox/addon/crxviewer
