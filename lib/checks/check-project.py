@@ -93,6 +93,10 @@ DUPLICATE_URL_MSG = (
     "The URL for this submission already exists in another listing."
     " Please check that this is not a duplicate entry"
 )
+REPO_404_MSG = (
+    "The GitHub repository linked in this submission returns a 404."
+    " Please ensure the repo exists and is publicly accessible"
+)
 
 
 def load_diff(path):
@@ -291,6 +295,21 @@ def _pr_discloses_authorship(pr_body):
     return bool(pr_body and _DISCLOSURE_RE.search(pr_body))
 
 
+def check_repo_exists(diff, token):
+    """Return REPO_404_MSG if an added service's GitHub repo returns a 404."""
+    if not token:
+        return None
+    seen = set()
+    for svc in get_services(diff, "added"):
+        owner, repo = utils.parse_github_field(svc.get("fields", {}).get("github"))
+        if not owner or (owner, repo) in seen:
+            continue
+        seen.add((owner, repo))
+        if utils.repo_status(owner, repo, token, session=SESSION) == 404:
+            return {"msg": REPO_404_MSG, "level": "error"}
+    return None
+
+
 def check_repo_signals(diff, pr_user, token, pr_body=""):
     """Check GitHub repo author match, stars, and activity for added services."""
     findings = []
@@ -393,6 +412,10 @@ def main():
             findings.append(finding)
 
         finding = check_duplicate_urls(diff, head)
+        if finding:
+            findings.append(finding)
+
+        finding = check_repo_exists(diff, token)
         if finding:
             findings.append(finding)
 

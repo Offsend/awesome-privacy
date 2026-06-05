@@ -12,6 +12,7 @@ from .github import (
     repo_is_archived,
     repo_is_fork,
     repo_pushed_days_ago,
+    repo_status,
 )
 from .http import DEFAULT_TIMEOUT, DEFAULT_USER_AGENT, check_url, make_session
 from .term import make_colors, setup_logging
@@ -36,6 +37,7 @@ __all__ = [
     "repo_is_archived",
     "repo_is_fork",
     "repo_pushed_days_ago",
+    "repo_status",
     "setup_logging",
     "slugify",
 ]
