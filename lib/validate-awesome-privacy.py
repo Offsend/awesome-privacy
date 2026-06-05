@@ -57,7 +57,9 @@ def resolve_path(data, path_parts):
 FIELD_HINTS = {
     "url": "must start with http:// or https://",
     "icon": "must start with http:// or https://",
-    "github": "must be `user/repo` or a full https://github.com/... URL",
+    "github": "must be `user/repo`",
+    "codeberg": "must be `user/repo`",
+    "git": "must be a full http(s):// URL to the source repository",
     "iosApp": "must be a full https://apps.apple.com/... URL",
     "androidApp": "must be a package name like `com.example.app`",
     "discordInvite": "must be a discord invite code or https://discord.gg/... URL",

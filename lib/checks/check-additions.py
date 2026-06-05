@@ -21,6 +21,7 @@ SCHEMA_ERRORS_PATH = "/tmp/schema-errors.json"
 MAX_SCHEMA_ERRORS_SHOWN = 10
 
 REQUIRED_FIELDS = ("name", "description", "url", "icon")
+REPO_FIELDS = ("github", "codeberg", "git")
 
 CONTRIBUTING = "https://github.com/Lissy93/awesome-privacy/blob/main/.github/CONTRIBUTING.md"
 
@@ -57,9 +58,14 @@ DESC_LENGTH_MSG = (
     f" character range. Please see our [Contributing Guidelines]({CONTRIBUTING}#description)"
 )
 OPENSOURCE_GITHUB_MSG = (
-    "You marked this service as open source but didn't include a `github` field."
-    " Please add the repository link"
+    "You marked this service as open source but didn't include a repository link."
+    " Please add a `github`, `codeberg` or `git` field"
 )
+
+
+def _has_repo(fields):
+    """Return True if a service has any source-repository field set."""
+    return any(fields.get(f) for f in REPO_FIELDS)
 
 
 def load_json(path):
@@ -140,7 +146,7 @@ def check_open_source(diff):
     """Return a finding if an added service has openSource missing or not true."""
     for svc in diff.get("services", {}).get("added", []):
         fields = svc.get("fields", {})
-        if fields.get("openSource") is not True and not fields.get("github"):
+        if fields.get("openSource") is not True and not _has_repo(fields):
             return OPENSOURCE_MSG
     return None
 
@@ -239,7 +245,7 @@ def check_opensource_github(diff):
     """Return a finding if an added service is open source but has no github field."""
     for svc in diff.get("services", {}).get("added", []):
         fields = svc.get("fields", {})
-        if fields.get("openSource") is True and not fields.get("github"):
+        if fields.get("openSource") is True and not _has_repo(fields):
             return OPENSOURCE_GITHUB_MSG
     return None
 
