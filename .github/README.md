@@ -73,6 +73,7 @@ corporations, governments, and hackers from logging, storing or selling your per
 	- [File Drop](#file-drop) (2)
 	- [Browser Sync](#browser-sync) (4)
 	- [Secure Conference Calls](#secure-conference-calls) (2)
+	- [Maps & Navigation](#maps--navigation) (1)
 - **Utilities**
 	- [Virtual Machines](#virtual-machines) (3)
 	- [PGP Managers](#pgp-managers) (8)
@@ -1236,6 +1237,18 @@ security + privacy required in your situation.
 > and provides high-quality video streaming, multi-user whiteboards,
 > breakout rooms, and instant chat.
 > </details>
+
+<p align="right"><sup><a href="#top">⬆️ [Back to Top]</a></sub></p>
+
+---
+
+### Maps & Navigation
+
+Mainstream mapping apps log your location history, search queries and routes,
+building a detailed picture of where you live, work and travel. A privacy-respecting
+maps app keeps navigation on your device, works offline, and collects nothing about you.
+
+- **[<img src='https://www.comaps.app/favicon.ico' width='14' alt='' /> CoMaps](https://www.comaps.app)** - Community-led, not-for-profit offline maps and navigation app built on OpenStreetMap data. No tracking, ads or data collection; all search and routing happen on-device. A community fork of Organic Map[…](https://awesome-privacy.xyz/productivity/maps-and-navigation/comaps "View full CoMaps report") 
 
 <p align="right"><sup><a href="#top">⬆️ [Back to Top]</a></sub></p>
 
